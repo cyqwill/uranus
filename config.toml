@@ -1,0 +1,14 @@
+title = 'Uranus TOML config file'
+
+# do not edit the field
+# if you add a field, adding chat/utils/config.go accordingly field
+[server]
+port = ':9876'
+addr = 'http://localhost'
+
+[db]
+db_type = 'postgres'
+db_username = 'root'
+db_password = 'jintian123'
+db_name = 'uranus'
+
