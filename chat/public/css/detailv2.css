@@ -1,0 +1,269 @@
+.pop-link {
+    position: fixed;
+    height: 30px;
+    top: 50px;
+    left: 2%;
+    font-size: 0.9em;
+    line-height: 30px;
+    color: #fff;
+    z-index: 9999;
+}
+
+.pop-link em {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    z-index: -9
+}
+
+.pop-link img {
+    display: inline-block;
+    width: auto;
+    height: 88%;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    border-radius: 1px;
+}
+
+.pop-link p {
+    display: inline-block;
+    position: relative;
+    top: -7px;
+    height: 27px;
+    line-height: 27px;
+    margin-left: 2px;
+    padding: 0 10px;
+    font-size: 0.7em;
+}
+
+.pop-link span {
+    color: #FFC151;
+    margin: 0 5px 0 10px;
+}
+
+.wap-feedback {
+    margin-bottom: 20px;
+    background-color: #FFEFC3;
+    color: #333;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+    padding: 0 10px 0 16px
+}
+
+.wap-feedback p {
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+}
+
+.wap-feedback span {
+    color: #4470c1;
+}
+
+.swiper-container .swiper-wrapper.img div {
+    background-size: cover;
+}
+
+.swiper-container .num {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 99;
+
+}
+
+.swiper-container .num i {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-color: #000;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+}
+
+.swiper-container .num span {
+    color: #fff;
+    position: relative;
+    z-index: 99;
+    font-size: 12px;
+    font-family: 'PingFangSC-Light', Arial;
+    line-height: 32px;
+}
+
+.pop-up {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.pop-mzsm {
+    width: 60%;
+    border-radius: 6px;
+    margin: 0 auto;
+    font-size: 12px;
+    overflow: hidden;
+    position: fixed;
+    left: 20%;
+    top: 20%;
+    z-index: 99999;
+}
+
+.pop-span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.7;
+}
+
+.pop-mzsm p {
+    text-align: justify;
+    line-height: 18px;
+    color: #333;
+    background-color: #fff;
+    padding: 7%;
+}
+
+.pop-mzsm button {
+    width: 50%;
+    height: 36px;
+    background-color: #E53563;
+    color: #fff;
+}
+
+.fk_atonce {
+    float: right;
+    border-left: 1px solid #fff
+}
+
+.detail-wrapper {
+}
+
+.detail-wrapper img {
+    width: 100%;
+}
+
+.goods-tag {
+
+}
+
+.show-detail img {
+    width: 100%;
+}
+
+.goods-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    /*box-shadow: 0 30px 29px rgba(0, 0, 0, 0.36), inset 0 0 29px white;*/
+    box-shadow: 2px 2px 2px rgba(255, 244, 248, 0.96);
+    /*margin: 5px;*/
+}
+
+.goods-item img {
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+}
+
+.goods-item div {
+    margin: 0;
+}
+
+/* 优惠券样式 */
+.quan-wrapper {
+    font-size: 10px;
+    height: 17px;
+    line-height: 20px;
+    position: relative;
+    color: #fff;
+    border-left: #ff9950 1px dotted;
+    margin-top: 9px!important;
+}
+
+.quan-content {
+    margin-left: 5px!important;
+    font-size: 15px;
+    color: #666;
+}
+.quan-content span{
+    position: absolute;
+    left: 0;
+    width: 19px;
+    height: 17px;
+    text-align: center;
+    background: #ff9950;
+    line-height: 17px;
+    font-size: 12px;
+    color: white;
+}
+.quan-content b{
+    position: absolute;
+    left: 17px;
+    margin: 0;
+    font-size: 12px;
+    text-indent: 0;
+    text-align: center;
+    padding: 0 5px;
+    color: #ff6a00;
+    background: #fff;
+    line-height: 17px;
+    height: 17px;
+    border: 1px solid #ff9950;
+}
+.quan-content b i {
+    font-family: "Microsoft Yahei";
+    font-style: normal;
+    font-size: 12px;
+}
+
+.goods-tag{
+
+}
+.goods-item .coupon-wrapper{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    font-size: 10px;
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#F2AE2E', endColorStr='#FE8102', gradientType='0');
+    background: -moz-linear-gradient(left,#F2AE2E,#FE8102);
+    background: -o-linear-gradient(left,#F2AE2E,#FE8102);
+    background: -webkit-gradient(linear,0 0,100% 100%,from(#F2AE2E),to(#FE8102));
+    height: 1rem;
+    line-height: 1rem;
+    color: #fff;
+    border-radius: 1px;
+    width: 50px;
+    text-align: center;
+    float: right;
+    font-family: "Microsoft Yahei";
+}
+.ads-list li{
+    /*width:auto!important;*/
+    /*clear: both!important;*/
+}
+.btn-circle-back{
+    background-color: black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 999;
+}

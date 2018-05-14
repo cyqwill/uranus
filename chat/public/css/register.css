@@ -1,0 +1,18 @@
+.header-title{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+.header-title h2{
+    color: #1abf9d;
+}
+
+.header-title p{
+    font-size: 12px;
+}
+
+/*重写这个active的颜色*/
+.am-tabs-default .am-tabs-nav>.am-active a {
+    background-color: #fb018b;
+    color: #fff;
+}

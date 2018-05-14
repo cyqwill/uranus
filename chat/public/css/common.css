@@ -1,0 +1,465 @@
+html {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    min-height: 100%;
+    padding-bottom: 36px;
+    background: rgba(175, 175, 175, 0.09);
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 36px;
+}
+
+.fd-whole {
+    background-color: rgba(198, 191, 193, 0.45);
+}
+
+/*  we-ui */
+.goods-list {
+    align-content: center;
+    text-align: center;
+}
+
+.goods-list .good-item {
+    height: 40px;
+    background: #9b9a9c;
+    box-shadow: #1a181b;
+    margin: 20px;
+}
+
+.main-body {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.divider-title-1 {
+    text-align: center;
+    font-size: 13px;
+    color: #3ca690;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.divider-image-1 {
+    margin-left: 10px;
+    text-align: left;
+    font-size: 13px;
+    color: #3ca690;
+}
+
+/* 修改amaze ui的默认 颜色 */
+.am-navbar {
+    padding-bottom: 20px;
+}
+
+.am-navbar-default .am-navbar-nav {
+    background-color: white;
+    color: #494646;
+    /*background-image: -webkit-linear-gradient(left, #ffa327, #ff5559)*/
+    box-shadow: 10px 10px 30px rgba(212, 202, 205, 0.78);
+}
+.am-navbar-default span{
+    color: #858282;
+}
+
+/* 导航栏样式 */
+.header-nav {
+    /*padding-left:5px;*/
+    /*padding-right:5px;*/
+    /*line-height: 60px;*/
+    height: 60px;
+    width: 100% !important;
+    background-image: -webkit-linear-gradient(left, #da348e, #ff2468);
+    box-shadow: 10px 10px 850px rgba(133, 126, 128, 0.78);
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.header-nav .search-input {
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 40%;
+    background-color: rgba(249, 244, 249, 0.76);
+    border-radius: 20px;
+    text-indent: 10px;
+    box-shadow: 10px 10px 20px rgba(200, 194, 199, 0.35);
+}
+
+.header-nav button {
+    outline: none !important;
+}
+
+.header-nav .ff-logo {
+    background-color: #fa316d;
+}
+
+.header-nav button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/*  -------- 图片轮播 商品 单品样式 -------------- */
+.goods-slider-item {
+    margin: 10px;
+    max-height: 250px !important;
+    max-width: 150px !important;
+    /*background-color: rgba(182, 175, 177, 0.62);*/
+}
+
+.goods-slider-item img {
+    max-height: 200px !important;
+    max-width: 150px !important;
+    border-radius: 5px 5px 0 0;
+}
+
+.goods-slider-item .good-title {
+    margin: 10px 0 0 0;
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.73);
+    /* 文字不换行的设置 */
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.goods-slider-item .good-origin-price {
+    text-decoration: line-through;
+    margin: 0;
+    font-size: 9px !important;
+    /*color: rgba(55, 53, 55, 0.76);*/
+    color: #ff1455;
+}
+
+.goods-slider-item .good-after-price {
+    margin: 0;
+    font-size: 9px;
+    color: #fa316d;
+}
+
+.goods-slider-item .good-after-price-big {
+    margin: 0;
+    font-size: 11px;
+    color: #fa316d;
+    font-weight: 300;
+}
+
+.goods-slider-item .good-coupons {
+    font-size: 12px;
+    background-color: #3ca690;
+    float: right;
+    box-shadow: 1px 1px 50px rgba(60, 166, 144, 0.51);
+}
+
+/*  -------- 图片轮播 商品 单品样式 -------------- */
+
+/* 文字相关 */
+.fd-text-no-wrap {
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fd-text-lg-white {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.fd-text-lg-red {
+    font-size: 20px;
+    color: #cd1d44;
+}
+
+.fd-text-md-white {
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.fd-text-sm-gray {
+    margin: 0;
+    font-size: 11px;
+    color: #8c8c8c;
+}
+
+.fd-text-sm-pink {
+    margin: 0;
+    font-size: 11px;
+    color: #da1d78;
+}
+
+.fd-text-sm-white {
+    margin: 0;
+    font-size: 11px;
+    color: #ffffff;
+}
+
+.fd-text-sm-orange {
+    margin: 0;
+    font-size: 11px;
+    color: #ff623d;
+}
+
+.fd-text-lg-gray {
+    margin: 0;
+    font-size: 13px;
+    color: #8c8c8c;
+}
+
+.fd-text-lg-green {
+    margin: 0;
+    font-size: 18px;
+    color: #38c182;
+}
+.fd-text-lg-black{
+    margin: 0;
+    font-size: 18px;
+    color: black;
+}
+
+.fd-text-normal-black {
+    margin: 0;
+    font-size: 13px;
+    color: #1d1d1d;
+}
+
+.fd-text-normal-white {
+    margin: 0;
+    font-size: 13px;
+    color: #ffffff;
+}
+
+.fd-text-normal-green {
+    margin: 0;
+    font-size: 13px;
+    color: #38c182;
+}
+
+.fd-text-normal-gray {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(47, 42, 47, 0.76);
+}
+
+.fd-text-normal-pink {
+    margin: 0;
+    font-size: 13px;
+    color: #ff3a8e;
+}
+
+.fd-text-normal-red {
+    margin: 0;
+    font-size: 13px;
+    color: #ff3750;
+    /*color: rgba(0, 0, 0, 0.58);*/
+}
+
+.fd-text-two-line-no-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* 文字相关 */
+
+.fd-img-shadow-radius {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 1px 1px 50px rgba(133, 126, 128, 0.24);
+}
+
+/* button 相关 */
+.fd-btn-gradient-green {
+    outline: none !important;
+    background-image: -webkit-linear-gradient(left, #30ad8d, #12c182);
+    /*background-image: -webkit-linear-gradient(left, #ff3750, #ff623d);*/
+    color: #ffffff;
+    border-radius: 50px;
+    font-size: 12px;
+    box-shadow: 10px 10px 20px rgba(22, 133, 121, 0.64);
+    border: none;
+    height: 38px;
+    width: auto;
+    padding: 10px 15px 10px 15px;
+}
+
+.fd-btn-chip {
+    outline: none !important;
+    height: 38px;
+    background-color: rgba(252, 251, 247, 0.93);
+    box-shadow: 10px 10px 20px rgba(200, 194, 199, 0.54);
+    font-size: 14px;
+    color: #168579;
+    border-radius: 40px;
+    padding: 10px 18px 10px 18px;
+    border: none;
+}
+
+.fd-input-white-highlight {
+    border: none;
+    outline: none;
+    height: 60px;
+    /*width: 140px;*/
+    background-color: rgba(255, 253, 255, 0.56);
+    box-shadow: 10px 10px 20px rgba(200, 194, 199, 0.35);
+    border-radius: 30px;
+    text-indent: 15px;
+    color: #168579;
+    color: rgba(255, 248, 253, 0.67);
+}
+
+.fd-input-white-normal {
+    border: 0 !important;
+    border: none !important;
+    outline: none;
+    height: 58px;
+    background-color: rgba(255, 253, 255, 0.56);
+    box-shadow: 10px 10px 20px rgba(200, 194, 199, 0.35);
+    font-size: 12px;
+    border-radius: 17px !important;
+    padding: 20px;
+}
+
+.fd-part {
+    background-color: white;
+    box-shadow: 10px 10px 20px rgba(53, 163, 131, 0.22);
+    margin: 10px 0 10px 0;
+}
+
+.fd-part-no-shadow {
+    background-color: #f7f7f7;
+    padding: 10px;
+}
+
+.fd-title-green {
+    font-size: 15px;
+    color: #30ad8d;
+}
+
+.fd-title-normal {
+    font-size: 15px;
+    color: #6d6d6d;
+}
+
+.fd-img-shadow {
+    box-shadow: 20px 20px 150px rgba(133, 126, 128, 0.9);
+}
+
+.fd-img-circle {
+    border-radius: 50%;
+}
+
+.fd-img-border-white {
+    border: 2px solid #fffdff;
+}
+
+.am-divider {
+    margin: 0;
+}
+
+/* load more */
+.load-more {
+    text-align: center;
+    font-size: 15px;
+    color: #12c182;
+    margin-bottom: 20px;
+
+}
+
+.fd-tag-span {
+    border-style: solid;
+    border-color: #fe4a65;
+    border-width: .05rem;
+    padding: 1px 2px 0;
+    font-size: 10px;
+    border-radius: 2px;
+    margin-right: .2rem;
+    color: #fe4a65;
+}
+
+/* 通用样式 */
+.fd-bk-white {
+    background-color: white;
+}
+
+.fd-pad-sm {
+    padding: 10px;
+}
+
+.fd-no-margin {
+    margin: 0 !important;
+}
+
+.fd-no-padding {
+    padding: 0 !important;
+}
+
+
+/* 优惠券样式 */
+.quan-wrapper {
+    font-size: 10px;
+    height: 17px;
+    line-height: 20px;
+    position: relative;
+    color: #fff;
+    border-left: #ff1455 1px dotted;
+    margin-top: 9px!important;
+}
+
+.quan-content {
+    margin-left: 5px!important;
+    font-size: 15px;
+    color: #666;
+}
+.quan-content span{
+    position: absolute;
+    left: 0;
+    width: 19px;
+    height: 17px;
+    text-align: center;
+    background: #ff1455;
+    line-height: 17px;
+    font-size: 12px;
+    color: white;
+}
+.quan-content b{
+    position: absolute;
+    left: 17px;
+    margin: 0;
+    font-size: 12px;
+    text-indent: 0;
+    text-align: center;
+    padding: 0 5px;
+    color: #ff1455;
+    background: #fff;
+    line-height: 17px;
+    height: 17px;
+    border: 1px solid #ff1455;
+}
+.quan-content b i {
+    font-family: "Microsoft Yahei";
+    font-style: normal;
+    font-size: 12px;
+}
+.fd-coupon-lg{
+    height: 28px;
+    background-color: #ff1455;
+    font-size: 15px;
+    color: white;
+    border-radius: 6px;
+    padding: 5px 10px 5px 10px;
+}
+
+

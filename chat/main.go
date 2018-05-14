@@ -63,8 +63,15 @@ func BuildRoutes() *gin.Engine{
 		v2.POST("/status", HandleUserRegister)
 		v2.GET("/status", HandleUserGet)
 	}
+
+	// static file routes
+	r.GET("/chat", ServeHome)
+
+	// ws route
+	r.GET("/v1/ws", HandleConnections)
 	return r
 }
+
 
 func main() {
 	gin.SetMode(gin.DebugMode)
@@ -75,7 +82,13 @@ func main() {
 	c := utils.Config("./config.toml")
 	Setup(c)
 
+	// APIs routes part
 	route := BuildRoutes()
 	log.Info(c.Server.Addr + c.Server.Port)
+
+	// handle msgs
+	go HandleMessages()
+
+	// this command must call at last
 	route.Run(c.Server.Port)
 }

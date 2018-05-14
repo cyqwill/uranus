@@ -1,0 +1,67 @@
+.am-form {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.am-form input {
+    border: 0!important;
+    border: none!important;
+    outline: none;
+    height: 50px;
+    background-color: rgba(255, 253, 255, 0.56);
+    box-shadow: 10px 10px 20px rgba(200, 194, 199, 0.35);
+    font-size: 12px;
+    border-radius: 17px!important;
+}
+
+.am-tabs {
+    padding: 0!important;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px rgba(200, 194, 199, 0.35);
+    background-color: rgba(255, 253, 255, 0.56);
+    border: 0 !important;
+}
+.am-tabs-default{
+    border: 0 !important;
+}
+
+.am-tabs-nav{
+    border-radius: 20px;
+
+}
+.am-active{
+    border-radius: 20px!important;
+}
+.am-active a{
+    border-radius: 20px!important;
+
+}
+.am-tabs-bd{
+    padding: 0!important;
+    border: 0 !important;
+    background-color: white;
+    border-radius: 20px!important;
+}
+
+.am-tabs-default {
+    border-radius: 20px!important;
+    box-shadow: 10px 10px 20px rgba(200, 194, 199, 0.35);
+    background-color: rgba(255, 253, 255, 0.56);
+    border: 0 !important;
+
+}
+.am-tab-panel{
+    border-radius: 20px!important;
+
+}
+.header-title{
+    background-image: -webkit-linear-gradient(left, #5fad9b, #12c182);
+    padding: 20px;
+}
+.am-accordion-item{
+    border: 0!important;
+}
+.holding-part{
+    padding: 20px;
+}

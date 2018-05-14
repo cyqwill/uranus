@@ -1,0 +1,204 @@
+.bottom-bar{
+    margin-top: 20px;
+    background: #4574e7;
+}
+.goods-item{
+    background-color: #ffffff;
+    border-radius: 8px;
+    /*box-shadow: 0 30px 29px rgba(0, 0, 0, 0.36), inset 0 0 29px white;*/
+    box-shadow: 1px 1px 50px rgba(246, 236, 239, 0.84);
+}
+.goods-item .good-title{
+    margin: 5px 0 0 5px;
+    max-width: 200px;
+    padding-left: 2px;
+    font-size: 11px;
+    color: #373537;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.goods-item img{
+    border-radius: 4px 4px 0 0;
+}
+
+.part-two{
+    margin-top: 20px;
+    width: 100%;
+    /*padding: 20px;*/
+    background: white;
+}
+.am-slides{
+    background-color: white;
+}
+
+
+/* 栏目精选 */
+.box {
+    padding: 20px;
+    height: 100px;
+    background-color: white;
+}
+.column-box{
+    padding-right: 20px;
+}
+.column-box p{
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.box-1 .column-box h2{
+    margin: 0;
+    font-size: 15px;
+    color: #fa704f;
+    font-weight: 600;
+}
+.box-1 .column-box p{
+    margin: 0;
+    font-size: 10px;
+}
+
+.box-2 .column-box h2{
+    margin: 0;
+    font-size: 15px;
+    color: #3ca690;
+    font-weight: 600;
+}
+.box-2 .column-box p{
+    margin: 0;
+    font-size: 10px;
+}
+
+.box-3 .column-box h2{
+    margin: 0;
+    font-size: 15px;
+    color: #4626a6;
+    font-weight: 600;
+}
+.box-3 .column-box p{
+    margin: 0;
+    font-size: 10px;
+}
+
+.box-4 .column-box h2{
+    margin: 0;
+    font-size: 15px;
+    color: #fa316d;
+    font-weight: 600;
+}
+.box-4 .column-box p{
+    margin: 0;
+    font-size: 10px;
+}
+.column-box img{
+    float: right;
+    margin-top: 10px;
+    max-width: 50px;
+    height:auto;
+}
+
+/* load more */
+.load-more{
+    text-align: center;
+    font-size: 15px;
+    color: #12c182;
+    margin-bottom: 20px;
+
+}
+
+/* 导航栏样式 */
+.nav-part {
+    /*width: 100%;*/
+    border: 1px solid #ccc;
+    background-color: white;
+}
+.swiper1 {
+    width: 100%;
+}
+.swiper1 .selected {
+    color: #ec5566;
+    border-bottom: 2px solid #ec5681;
+}
+.swiper1 .swiper-slide {
+    text-align: center;
+    font-size: 14px;
+    height: 50px;
+    /*width: auto;*/
+    min-width: 40px;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    cursor: pointer;
+}
+.swiper2 {
+    width: 100%;
+}
+.swiper2 .swiper-slide {
+    height:auto;
+    /*height: calc(100vh - 50px);*/
+    background-color: white;
+    /*color: #fff;*/
+    text-align: center;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+}
+
+/* 优惠券样式 */
+.quan-wrapper {
+    font-size: 10px;
+    height: 17px;
+    line-height: 20px;
+    position: relative;
+    color: #fff;
+    border-left: #ff1455 1px dotted;
+    margin-top: 9px!important;
+}
+
+.quan-content {
+    margin-left: 5px!important;
+    font-size: 15px;
+    color: #666;
+}
+.quan-content span{
+    position: absolute;
+    left: 0;
+    width: 19px;
+    height: 17px;
+    text-align: center;
+    background: #ff1455;
+    line-height: 17px;
+    font-size: 12px;
+    color: white;
+}
+.quan-content b{
+    position: absolute;
+    left: 17px;
+    margin: 0;
+    font-size: 12px;
+    text-indent: 0;
+    text-align: center;
+    padding: 0 5px;
+    color: #ff1455;
+    background: #fff;
+    line-height: 17px;
+    height: 17px;
+    border: 1px solid #ff1455;
+}
+.quan-content b i {
+    font-family: "Microsoft Yahei";
+    font-style: normal;
+    font-size: 12px;
+}
+

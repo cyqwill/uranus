@@ -1,0 +1,27 @@
+.main-body{
+    margin-bottom: 50px;
+}
+
+.more-header{
+    text-align: center;
+    margin-top: 20px;
+}
+.more-header h2{
+    background-image: -webkit-linear-gradient(left, #8624c1, #ff2ed2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+}
+
+
+/* reset we ui */
+.weui-cell{
+    background-color: white;
+    font-size: 14px;
+}
+.weui-cells{
+    box-shadow: 1px 1px 50px rgba(133, 126, 128, 0.24);
+}
+.weui-cell a{
+    text-decoration: none;
+}

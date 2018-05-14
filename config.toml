@@ -3,7 +3,7 @@ title = 'Uranus TOML config file'
 # do not edit the field
 # if you add a field, adding chat/utils/config.go accordingly field
 [server]
-port = ':9876'
+port = ':9000'
 addr = 'http://localhost'
 
 [db]
