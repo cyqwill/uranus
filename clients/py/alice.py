@@ -52,7 +52,7 @@ class VAction(argparse.Action):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="WebSocket Simple Dump Tool")
-    parser.add_argument("url", metavar="ws_url",
+    parser.add_argument('-u', "--url", metavar="ws_url", default="ws://localhost:9000/v1/ws",
                         help="websocket url. ex. ws://echo.websocket.org/")
     parser.add_argument("-v", "--verbose", default=0, nargs='?', action=VAction,
                         dest="verbose",

@@ -39,6 +39,7 @@ type User struct {
 	UserAvatar string `json:"user_avatar"`
 	UserPhone string `json:"user_phone"`
 	UserEmail string `json:"user_email"`
+	UserPassword string `json:"user_password"`
 	// tags for finding people by tag
 	//UserTags []string `json:"user_tags"`
 	UserNickName string `json:"user_nick_name"`

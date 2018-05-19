@@ -11,6 +11,10 @@ Simply, **Uranus** contains a websocket for real-time communication and a long-p
 
 With all those powered clients, I can receive all messages on **Uranus Central Hub**, which gives me full information things I want to know.
 
+
+## Install
+Pls make sure postgres were installed, and there is an database named **uranus**. Then you should change the database username and password in `config.toml` file.
+
 ## Current Functionality
 - websocket 1 to 1 chat;
 - websocket many to many chat;

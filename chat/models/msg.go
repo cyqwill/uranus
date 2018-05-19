@@ -66,3 +66,33 @@ type ImageMsg struct {
 	SendType    SendType `json:"send_type"`
 	MsgType int `json:"msg_type"`
 }
+
+// HiMsg for token validation
+// HiMsg is very important, cause I have to know which/kind devices it is
+// Phone or PC or Arduino or RaspberryPi, even the location should provide
+// UA include the operation system info and uranus client version
+type HiMsg struct{
+	Token string `json:"token"`
+	UserAddr string `json:"user_addr"`
+	Devices string `json:"devices"`
+	Location string `json:"location"`
+	UA string `json:"ua"`
+}
+
+// Generous sending msg
+type SendMsg struct{
+	TargetAddr string `json:"target_addr"`
+	SendAddr string `json:"send_addr"`
+	Content string `json:"content"`
+	MsgType int `json:"msg_type"`
+}
+
+// For adding a group or something
+type AddMsg struct{
+
+}
+
+// For deleting msg
+type DelMsg struct{
+
+}

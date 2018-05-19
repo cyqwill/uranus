@@ -17,13 +17,6 @@ var (
 	DB *gorm.DB
 )
 
-type (
-	Todo struct {
-		gorm.Model
-		Title     string `json:"title"`
-		Completed int    `json:"completed"`
-	}
-)
 
 
 func ConnectDB(c *utils.AppConfig) bool{
@@ -65,3 +58,12 @@ func createOrMigrate(db *gorm.DB, m interface{}) {
 		db.CreateTable(m)
 	}
 }
+
+/*
+
+Database Operation
+
+*/
+
+//func GetUserById(id int) models.User{
+//	return nil}

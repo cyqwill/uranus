@@ -2,7 +2,6 @@ package main
 
 
 // borrowed from github to support rooms chat
-
 type message struct {
 	data []byte
 	room string
@@ -18,13 +17,10 @@ type subscription struct {
 type hub struct {
 	// Registered connections.
 	rooms map[string]map[*connection]bool
-
 	// Inbound messages from the connections.
 	broadcast chan message
-
 	// Register requests from the connections.
 	register chan subscription
-
 	// Unregister requests from connections.
 	unregister chan subscription
 }

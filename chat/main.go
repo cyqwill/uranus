@@ -46,6 +46,8 @@ func BuildRoutes() *gin.Engine{
 		// user register and get
 		v1.POST("/users", HandleUserRegister)
 		v1.GET("/users", HandleUserGet)
+		v1.PUT("/users", HandleUserEdit)
+		v1.POST("/users_login", HandleUserLogin)
 
 		// user status and get
 		v1.POST("/status", HandleUserRegister)
@@ -66,7 +68,6 @@ func BuildRoutes() *gin.Engine{
 
 	// static file routes
 	r.GET("/chat", ServeHome)
-
 	// ws route
 	r.GET("/v1/ws", HandleConnections)
 	return r
