@@ -7,6 +7,6 @@ import 	(
 
 func CheckError(err error, info string) {
 	if err != nil {
-		log.Fatalf("%sGot error%s: %s, detail: %s", cg.BoldStart, cg.BoldEnd, info, err.Error())
+		log.Errorf("%sGot error%s: %s, detail: %s", cg.BoldStart, cg.BoldEnd, info, err.Error())
 	}
 }

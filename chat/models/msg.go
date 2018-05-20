@@ -81,8 +81,8 @@ type HiMsg struct{
 
 // Generous sending msg
 type SendMsg struct{
-	TargetAddr string `json:"target_addr"`
-	SendAddr string `json:"send_addr"`
+	Target string `json:"target"`
+	Sender string `json:"sender"`
 	Content string `json:"content"`
 	MsgType int `json:"msg_type"`
 }

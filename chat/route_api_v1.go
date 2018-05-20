@@ -51,17 +51,20 @@ func HandleUserRegister(context *gin.Context) {
 	if db.DB.Where("user_acc=?", userAcc).First(&userTry).RecordNotFound(){
 		// user not found, create it
 		db.DB.Create(&user)
-		user.UserAddr = "usr" + utils.GenAddr(user.ID)
+		uAddr := utils.GenAddr(user.ID)
+		user.UserAddr = "usr" + uAddr
+
+		log.Infof("FUCK GenAddr: %s gened: %s", user.UserAddr, uAddr)
 		db.DB.Save(&user)
 
 		// should return a token to user, as well as login
 		claims := make(map[string]interface{})
-		claims["ID"] = user.ID
+		claims["id"] = user.ID
 		claims["msg"] = "hiding egg"
-		claims["UserAddr"] = user.UserAddr
+		claims["user_addr"] = user.UserAddr
 		token, _ := utils.Encrypt(claims)
 		log.Infof("Request new user: %s, it is new.", user)
-		data := map[string]interface{}{"token": token, "id": user.ID, "addr": user.UserAddr}
+		data := map[string]interface{}{"token": token, "id": user.ID, "user_addr": user.UserAddr}
 		context.JSON(200, gin.H{
 			"status": "success",
 			"code": http.StatusOK,
@@ -97,29 +100,38 @@ func HandleUserLogin(context *gin.Context)  {
 	// find the user and check the password
 	// if right, return a token, otherwise refuse login
 	userTry := models.User{}
-	db.DB.Where("user_acc = ?", userAcc).Find(&userTry)
-	if userTry.UserPassword == userPassword{
-		// return a token?
-		claims := make(map[string]interface{})
-		claims["id"] = userTry.ID
-		claims["msg"] = "hiding egg"
-		claims["user_addr"] = userTry.UserAddr
-		token, _ := utils.Encrypt(claims)
-		data := map[string]interface{}{"token": token, "id": userTry.ID, "user_addr": userTry.UserAddr}
+	if db.DB.Where("user_acc = ?", userAcc).First(&userTry).RecordNotFound(){
 		context.JSON(200, gin.H{
-			"status": "success",
-			"code": http.StatusOK,
-			"msg": "login success, welcome " + userTry.UserNickName,
-			"data": data,
-		})
-	} else {
-		// login failed, refuse it
-		context.JSON(200, gin.H{
-			"status": "unauthorized",
-			"code": http.StatusUnauthorized,
-			"msg": "you are not allowed to login",
+			"status": "error",
+			"code": http.StatusNotFound,
+			"msg": "login what? you are not even exist!",
 			"data": "",
 		})
+	} else {
+		//log.Infof("[login] here what found: %s", userTry)
+		if userTry.UserPassword == userPassword{
+			// return a token?
+			claims := make(map[string]interface{})
+			claims["id"] = userTry.ID
+			claims["msg"] = "hiding egg"
+			claims["user_addr"] = userTry.UserAddr
+			token, _ := utils.Encrypt(claims)
+			data := map[string]interface{}{"token": token, "id": userTry.ID, "user_addr": userTry.UserAddr}
+			context.JSON(200, gin.H{
+				"status": "success",
+				"code": http.StatusOK,
+				"msg": "login success, welcome " + userTry.UserNickName,
+				"data": data,
+			})
+		} else {
+			// login failed, refuse it
+			context.JSON(200, gin.H{
+				"status": "unauthorized",
+				"code": http.StatusUnauthorized,
+				"msg": "you are not allowed to login",
+				"data": "",
+			})
+		}
 	}
 }
 

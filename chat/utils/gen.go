@@ -3,6 +3,7 @@ package utils
 import (
 
 	"math/rand"
+	"time"
 )
 
 
@@ -29,6 +30,7 @@ func GenAddr(id uint) string{
 }
 
 func randomStr(n int) string{
+	rand.Seed(time.Now().UnixNano())
 	r := ""
 	i := 0
 	for i < n {

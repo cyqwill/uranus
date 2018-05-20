@@ -29,7 +29,7 @@ import os
 OPCODE_DATA = (websocket.ABNF.OPCODE_TEXT, websocket.ABNF.OPCODE_BINARY)
 
 # set target address
-target_addr = 'usrBwfaCE3DtW'
+target_addr = 'usrHtNZ3klmi2'
 send_addr = ''
 
 
@@ -78,18 +78,7 @@ class InteractiveConsole(code.InteractiveConsole):
 
     def read(self):
         content = input('> ')
-        msg = {
-            "target": target_addr,
-            "sender": send_addr,
-            "content": content,
-            "msg_type": 0,
-        }
-        out_msg = {
-            "msg_type": "send",
-            "payload": msg
-        }
-        msg_str = json.dumps(out_msg)
-        return bytes(msg_str, encoding='utf-8')
+        return send_msg(content, target_addr)
 
 
 def main(token, addr):
@@ -131,11 +120,14 @@ def main(token, addr):
                 msg = "%s: %s" % (websocket.ABNF.OPCODE_MAP.get(opcode), data)
             msg_dict = json.loads(msg)
             content = msg_dict['content']
+            sender = msg_dict["sender"]
             if msg is not None:
                 if args.timings:
                     console.write(str(time.time() - start_time) + ": " + content)
                 else:
                     console.write(content)
+                # send back a msg
+                ws.send(send_msg(content + " 你说的是这个吧。我是个回音机器人", sender))
             if opcode == websocket.ABNF.OPCODE_CLOSE:
                 break
 
@@ -178,12 +170,28 @@ def hi_msg(token, addr):
     return b
 
 
+def send_msg(content, target):
+    msg = {
+        "target": target,
+        "sender": send_addr,
+        "content": content,
+        "msg_type": 0,
+    }
+    out_msg = {
+        "msg_type": "send",
+        "payload": msg
+    }
+    msg_str = json.dumps(out_msg)
+    return bytes(msg_str, encoding='utf-8')
+
+
 def login():
     login_url = "http://localhost:9000/api/v1/users_login"
     acc = input("[login] input your user account (like lucasjin): ")
     pwd = input("[login] input your account password: ")
     data = {"user_acc": acc, "user_password": pwd}
     rp = requests.post(login_url, data=data)
+    print(rp)
     if rp.ok:
         rp = rp.json()
         print(rp)
@@ -199,7 +207,7 @@ def login():
 
 if __name__ == "__main__":
     try:
-        f_name = 'alice.pkl'
+        f_name = 'bob.pkl'
         if os.path.exists(f_name):
             with open(f_name, 'rb') as f:
                 a = pickle.load(f)

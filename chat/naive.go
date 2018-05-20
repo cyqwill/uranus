@@ -10,6 +10,7 @@ import (
 	"time"
 	"./models"
 	"github.com/mitchellh/mapstructure"
+	"io"
 )
 
 // naive for test
@@ -45,6 +46,14 @@ type OutMsg struct{
 	Payload interface{}
 }
 
+type TestSendMsg struct{
+	Target string
+	Sender string
+	Content string
+	MsgType int
+}
+
+
 func ServeHome(c *gin.Context) {
 	fmt.Println(c.Request.URL)
 	if c.Request.Method != "GET" {
@@ -68,9 +77,18 @@ func HandleConnections(c *gin.Context){
 		// every incoming msg must provide a token and a target id (this 2 are very important)
 		err := ws.ReadJSON(&msg)
 		if err != nil {
-			log.Errorf("Error in read websocket json, error: %s", err.Error())
-			//delete(clients, ws)
-			break
+			if err == io.ErrUnexpectedEOF{
+				// indicates this connection are closed, should delete it from clientsPool
+				ws.Close()
+				log.Errorf("got a closed connection %s", ws)
+			} else {
+				log.Errorf("Error in read websocket json, error: %s", err.Error())
+				errorResponse := map[string]string{
+					"error": "your must send json as bytes to server through websocket.",
+				}
+				ws.WriteJSON(errorResponse)
+				break
+			}
 		} else {
 			payload := msg.Payload
 			switch msg.MsgType {
@@ -79,22 +97,20 @@ func HandleConnections(c *gin.Context){
 				log.Infof("[send] incoming>: %s", payload)
 				sendMsg := models.SendMsg{}
 				err := mapstructure.Decode(payload, &sendMsg)
+				log.Infof("sendMsg: %s", sendMsg)
 				if err != nil {
 					// send back to same address a error msg say, hi msg not right
-					var msg = OutMsg{}
-					msg.TargetAddr = sendMsg.SendAddr
-					msg.Payload = map[string]string{
-						"error": "send msg error " + err.Error(),
+					errorResponse := map[string]string{
+						"error": "your send msg struct is not right, read uranus doc first.",
 					}
-					msgQueue <- msg
+					ws.WriteJSON(errorResponse)
+					break
 				} else {
 					// TODO: I am stuck here, how to send off-line msg?
-					var msg = OutMsg{}
-					msg.TargetAddr = sendMsg.TargetAddr
-					msg.Payload = sendMsg.Content
-					msgQueue <- msg
+					outMsg := OutMsg{TargetAddr:sendMsg.Target, Payload:sendMsg}
+					log.Infof("[send] OutMsg send to msgQueue: %s, targetAddr: %s", outMsg, sendMsg.Target)
+					msgQueue <- outMsg
 				}
-
 			case "hi":
 				log.Infof("[hi] incoming>: %s", payload)
 				// add this to clients pool
@@ -106,6 +122,7 @@ func HandleConnections(c *gin.Context){
 						"error": "hi msg not right, should be have token, and user_addr field etc.",
 					}
 					ws.WriteJSON(errorResponse)
+					break
 				}else{
 					// new clients online
 					claims, err := utils.Decrypt(hiMsg.Token)
@@ -115,6 +132,7 @@ func HandleConnections(c *gin.Context){
 							"error": "your token is invalid, re-login to refresh token.",
 						}
 						ws.WriteJSON(errorResponse)
+						break
 					} else{
 						clientAddr := claims["user_addr"].(string)
 						ua := hiMsg.UA
@@ -127,6 +145,7 @@ func HandleConnections(c *gin.Context){
 							clients := []*Client{&client}
 							clientsPool[clientAddr] = clients
 						}
+						logOnlineDevicesInfo(clientsPool)
 					}
 				}
 			case "add":
@@ -135,6 +154,11 @@ func HandleConnections(c *gin.Context){
 			case "del":
 				log.Infof("[del] incoming>: %s", payload)
 				continue
+			default:
+				errorResponse := map[string]string{
+					"error": "only hi, send, add, del msg type are supported.",
+				}
+				ws.WriteJSON(errorResponse)
 			}
 		}
 	}
@@ -146,9 +170,13 @@ func HandleMessages(){
 		log.Info("msg from msgQueue: ", msg)
 		if targetClients, ok := clientsPool[msg.TargetAddr]; ok {
 			// one addr may have multi clients
-			for _, client := range targetClients {
+			for i, client := range targetClients {
 				err := client.Conn.WriteJSON(msg.Payload)
-				utils.CheckError(err, "msgQueue write json.")
+				if err != nil {
+					log.Errorf("Error in broadcast msg. will drop this ws connection.")
+					// drop lost connection
+					clientsPool[msg.TargetAddr] = append(targetClients[:i], targetClients[i+1:]...)
+				}
 			}
 		} else {
 			// targetAddr not in clientsPool
@@ -162,5 +190,11 @@ func HandleMessages(){
 // else return nil, indicates the client are off-line
 func findClientFromPool(targetAddr string) {
 
+}
+
+func logOnlineDevicesInfo(clientsPool map[string][]*Client) {
+	for k, v := range clientsPool {
+		log.Infof("[Online] user_addr: %s  devices: %s", k, len(v))
+	}
 }
 
