@@ -27,7 +27,8 @@ type Client struct{
 
 // save current online clients
 //var clients = make(map[*websocket.Conn]bool)
-var clientsPool = make(map[string]*Client)
+// Note: clientsPool now the value is a client list
+var clientsPool = make(map[string][]*Client)
 // msg queue are all the messages
 var msgQueue = make(chan OutMsg)
 var wsUpGrader = websocket.Upgrader{}
@@ -101,28 +102,31 @@ func HandleConnections(c *gin.Context){
 				err := mapstructure.Decode(payload, &hiMsg)
 				if err != nil {
 					// send back to same address a error msg say, hi msg not right
-					var msg = OutMsg{}
-					msg.TargetAddr = hiMsg.UserAddr
-					msg.Payload = map[string]string{
-						"error": "hi msg error " + err.Error(),
+					errorResponse := map[string]string{
+						"error": "hi msg not right, should be have token, and user_addr field etc.",
 					}
-					msgQueue <- msg
+					ws.WriteJSON(errorResponse)
 				}else{
 					// new clients online
 					claims, err := utils.Decrypt(hiMsg.Token)
 					if err != nil {
 						// token invalid, expired or not right, refuse connection
-						var msg = OutMsg{}
-						msg.TargetAddr = hiMsg.UserAddr
-						msg.Payload = map[string]string{
-							"error": "token invalid. " + err.Error(),
+						errorResponse := map[string]string{
+							"error": "your token is invalid, re-login to refresh token.",
 						}
-						msgQueue <- msg
+						ws.WriteJSON(errorResponse)
 					} else{
 						clientAddr := claims["user_addr"].(string)
 						ua := hiMsg.UA
 						client := Client{Conn: ws, ClientAddr:clientAddr, UA:ua, UpTime:time.Now().Unix()}
-						clientsPool[clientAddr] = &client
+						// if clientAddr in clientsPool keys, then add to it's clients list, other wise not append
+						if _, ok := clientsPool[clientAddr]; ok {
+							clientsPool[clientAddr] = append(clientsPool[clientAddr], &client)
+						} else {
+							// clientAddr not in clientsPool
+							clients := []*Client{&client}
+							clientsPool[clientAddr] = clients
+						}
 					}
 				}
 			case "add":
@@ -138,13 +142,14 @@ func HandleConnections(c *gin.Context){
 
 func HandleMessages(){
 	for {
-		//msg := <- broadcast
 		msg := <- msgQueue
 		log.Info("msg from msgQueue: ", msg)
-		// TODO: What if targetAddr not in clientsPool????
-		if targetClient, ok := clientsPool[msg.TargetAddr]; ok {
-			err := targetClient.Conn.WriteJSON(msg.Payload)
-			utils.CheckError(err, "msgQueue write json.")
+		if targetClients, ok := clientsPool[msg.TargetAddr]; ok {
+			// one addr may have multi clients
+			for _, client := range targetClients {
+				err := client.Conn.WriteJSON(msg.Payload)
+				utils.CheckError(err, "msgQueue write json.")
+			}
 		} else {
 			// targetAddr not in clientsPool
 			// I think when it on-line it will receive msg again!!

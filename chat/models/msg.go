@@ -74,7 +74,7 @@ type ImageMsg struct {
 type HiMsg struct{
 	Token string `json:"token"`
 	UserAddr string `json:"user_addr"`
-	Devices string `json:"devices"`
+	Device string `json:"device"`
 	Location string `json:"location"`
 	UA string `json:"ua"`
 }
